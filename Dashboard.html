@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Dashboard</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        body {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQh3rXIAwawL7fTMjCaYDO-bkgWam9CgEC5uQ&s');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        .sidebar {
+            height: 100%;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 0;
+            background-color: #343a40;
+            padding-top: 60px;
+            z-index: 1;
+            overflow-x: hidden;
+            transition: 0.5s;
+        }
+        .sidebar a {
+            padding: 8px 8px 8px 8px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+        .sidebar a:hover {
+            background-color: #575d63;
+        }
+        .sidebar .closebtn {
+            position: absolute;
+            top: 0;
+            right: 10px;
+            font-size: 36px;
+            margin-left: 5px;
+        }
+        .openbtn {
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #111;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+        }
+        .openbtn:hover {
+            background-color: #444;
+        }
+        .content {
+            margin-left: 30px;
+            padding: 5px;
+        }
+        .navbar-custom{
+            padding: 0.5px;
+            background-color: #5b5768;
+            color: #FFFFFF !important;
+        }
+
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-nav .nav-link {
+            color: white;
+        }
+
+        .navbar button:hover {
+            font-weight: bolder;
+            background-color: #7a7e82;
+        }
+
+        .navbar a:hover {
+            font-weight:bolder;
+            background-color: #ff0004;
+            color: #ffffff;
+        }
+        .navbar input[type=text] {
+            float: right;
+            padding: 2px;
+            border: rgb(248, 241, 241);
+            margin-top: 2px;
+            margin-right: 3px;
+            font-size: 17px;
+        }
+        .logout {
+            background-color: #f6292c;
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+        <button class="openbtn" onclick="openNav()">&#x2630</button>
+        
+        <div class="navbar collapse navbar-collapse justify-content-end" id="navbarNav">
+            <div class="search-bar d-flex align-items-center col-md-offset-3">
+                <input type="text" placeholder="Search...">
+                <button type="button"><i class="fa fa-fw fa-search"></i></button>
+            </div>
+            <button class="nav-link col-md-1 btn-sm" href="#aboutUs" style="padding: 0.5px"><i class="fa fa-fw fa-info"></i>About Us</button>
+            <button class="nav-link col-md-1 btn-sm" href="#contact" style="padding: 0.5px"><i class="fa fa-fw fa-phone"></i>Contact</button>
+            <button class="nav-link" href="#notification" style="padding: 1px"><i class="fa fa-fw fa-bell"></i></button>
+            <a id="logout" class="nav-link logout btn-sm" href="login.html"><i class="fa fa-fw fa-sign-out"></i>Logout</a>
+        </div>
+    </nav>
+
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#215</a>
+        <a class="nav-link" href="#dashboard"><i class="fa fa-fw fa-safari"></i>Dashboard</a>
+        <a class="nav-link" href="#profile"><i class="fa fa-fw fa-user"></i>Profile</a>
+        <a class="nav-link" href="#settings"><i class="fa fa-fw fa-gear"></i>Settings</a>
+        
+        <a class="nav-link dropdown-toggle" data-toggle="collapse" data-target="#userMenu" aria-expanded="false" aria-controls="userMenu">
+            User Management
+        </a>
+        <div class="collapse" id="userMenu">
+            <a class="nav-link" href="#userlogin">User Login</a>
+            <a class="nav-link" href="#userlist">User List</a>
+            <a class="nav-link" href="#userdetails">User Details</a>
+        </div>
+
+        <a class="nav-link dropdown-toggle" data-toggle="collapse" data-target="#assetMenu" aria-expanded="false" aria-controls="assetMenu">
+            Asset Management
+        </a>
+        <div class="collapse" id="assetMenu">
+            <a class="nav-link" href="#assetmanage">Asset Management</a>
+            <a class="nav-link" href="#assetlist">Asset List</a>
+            <a class="nav-link" href="#assetdetails">Asset Details</a>
+        </div>
+    </div>
+
+    <div class="content" align="center">
+        <form class="content" action="/dashboard" method="POST" style="margin-top:20px;">
+            <div style="padding:20px;width:fit-content;height:fit-content;border-radius:20px;background-color:#d864ca;color: #FFFFFF;">
+                <h2>Welcome to our community!!!</h2>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function openNav() {
+          document.getElementById("mySidebar").style.width = "200px";
+          document.getElementById("main").style.marginLeft = "200px";
+        }
+        
+        function closeNav() {
+          document.getElementById("mySidebar").style.width = "0";
+          document.getElementById("main").style.marginLeft= "0";
+        }
+    </script>
+    <script>
+        $(document).ready(function(){
+            $("#logout").click(function(){
+            alert("Logout Successful");
+            });
+        });
+    </script>
+</body>
+</html>
